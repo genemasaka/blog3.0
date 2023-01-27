@@ -1,4 +1,4 @@
-use stylist::style;
+use stylist::yew::use_style;
 use yew::prelude::*;
 struct Blog {
 	token: String,
@@ -7,7 +7,7 @@ struct Blog {
 	url: String,
 }
 
-#[function_component(App)]
+#[styled_component(App)]
 fn app()-> Html {
 	let videos: Vec<String> = vec![];
 	let card_style = style!(
