@@ -1,23 +1,27 @@
 use yew::prelude::*;
 use yew::{classes, html};
-use image::io::Reader as ImageReader;
+
+
+#[function_component]
 fn App() -> Html {
-    let landing_img = ImageReader::open("./assets/blog3_asset.png").unwrap().decode().unwrap();
    
     html! {
         <>
         <div class={classes!("container")}>
+        <div  class={classes!("row")}>
         <div class={classes!("left")}>
         <h2 class={classes!("title")}>{"blog3.0"}</h2>
         <p class={classes!("welcome-text")}>{"Blog3.0 is the future of decentralized blogging. 
         It tokenizes users' blogs and allows for seamless 
         reading and commenting on the blockchain."}
         </p>
-        <img class={classes!("lan-img")}src={landing_img}/>
+        <img class={classes!("lan-img")} src="./assets/blog3_asset.png" />
         </div>
-        <div class!{class="right"}
-        <p>{"login with metamask to start your journey"}</p>
+        <div class={classes!("right")}>
+        <h3 class={classes!("login-txt")}>{"login with metamask to start your journey"}</h3>
         <button>{"login"}</button>
+        </div>
+        </div>
         </div>
         </>
     }

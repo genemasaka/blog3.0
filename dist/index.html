@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<title>Blog3.0</title>
+<style type="text/css">
+html, body {
+    margin: 0;
+    height: 100%;
+}
+.container {
+	margin: 0;
+    height: 100%;
+}
+.row {
+	height: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	padding: 0;
+}
+.left {
+	height: 100%;
+	width: 70%;
+	background: black;
+}
+.right {
+	height: 100%;
+	background: whitesmoke;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	
+}
+.title {
+position: absolute;
+height: 33px;
+width: 50px;
+margin-left: 20px;
+margin-top: 25px;
+font-family: 'Alegreya Sans SC';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: 0.2em;
+
+color: #FFFFFF;
+}
+.welcome-text {
+position: absolute;
+width: 400px;
+height: 600px;
+color: white;
+font-family: 'IM FELL DW Pica';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+margin-left: 470px;
+margin-top: 180px;
+/* or 150% */
+
+text-align: right;
+letter-spacing: 0.2em;
+}
+.lan-img {
+position: absolute;
+width: 330px;
+height: 330px;
+margin-top: 300px;
+margin-left: 80px;
+mix-blend-mode: normal;
+opacity: 0.33;
+}
+.login-txt {
+position: absolute;
+width: 239px;
+height: 143px;
+margin-left: 90px;
+font-family: 'Alegreya Sans SC';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+letter-spacing: 0.2em;
+
+color: #1E1E1E;
+
+}
+button {
+position: absolute;
+width: 180px;
+height: 30px;
+margin-left: 120px;
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&amp;family=IM+Fell+DW+Pica:ital@1&amp;display=swap" rel="stylesheet">
+
+<link rel="preload" href="/blog3-9906b51a4c80dda2_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/blog3-9906b51a4c80dda2.js"></head>
+<body>
+
+<script type="module">import init from '/blog3-9906b51a4c80dda2.js';init('/blog3-9906b51a4c80dda2_bg.wasm');</script><script>(function () {
+    var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    var url = protocol + '//' + window.location.host + '/_trunk/ws';
+    var poll_interval = 5000;
+    var reload_upon_connect = () => {
+        window.setTimeout(
+            () => {
+                // when we successfully reconnect, we'll force a
+                // reload (since we presumably lost connection to
+                // trunk due to it being killed, so it will have
+                // rebuilt on restart)
+                var ws = new WebSocket(url);
+                ws.onopen = () => window.location.reload();
+                ws.onclose = reload_upon_connect;
+            },
+            poll_interval);
+    };
+
+    var ws = new WebSocket(url);
+    ws.onmessage = (ev) => {
+        const msg = JSON.parse(ev.data);
+        if (msg.reload) {
+            window.location.reload();
+        }
+    };
+    ws.onclose = reload_upon_connect;
+})()
+</script></body></html>
