@@ -9,8 +9,9 @@ use ethers_core::rand::thread_rng;
 use std::{path::Path, sync::Arc};
 use serde::{Deserialize, Serialize};
 use serde_json;
+use tokio;
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 async fn connect_wallet() -> Result<(), Box<dyn std::error::Error>> {
     let window: Window = window().unwrap();
     let ethereum = js_sys::Reflect::get(&window, &"ethereum".into());
@@ -45,12 +46,7 @@ fn App() -> Html {
         </div>
         <div class={classes!("right")}>
         <h3 class={classes!("login-txt")}>{"login with metamask to start your journey"}</h3>
-        <button onclick={|_| { 
-        let task = async move { 
-        connect_wallet();
-        }; 
-        spawn_local(task); 
-        }} >{"login"}</button>
+        <button>{"login"}</button>
         </div>
         </div>
         </div>

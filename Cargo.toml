@@ -14,5 +14,4 @@ serde_json = "1.0.93"
 serde = "1.0.152"
 js-sys = "0.3.61"
 web-sys = "0.3.61"
-
-
+tokio = { version = "1.25.0", features = ["macros", "rt"] }
